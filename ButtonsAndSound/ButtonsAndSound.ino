@@ -4,7 +4,7 @@ const int NUM_BUTTONS = 3;
 const int PIN_OF_BUZZER = 14;
 
 Button *buttons[NUM_BUTTONS];
-byte buttonsPressed[NUM_BUTTONS];
+byte buttonsState[NUM_BUTTONS];
 
 Led led(13, false);
 Buzzer buzzer(14);
@@ -21,10 +21,10 @@ void setup() {
 
 void loop() {
   for (int i = 0; i < NUM_BUTTONS; i++) {
-    buttonsPressed[i] = buttons[i]->pressed();
+    buttonsState[i] = buttons[i]->state();
   }
   for (int i = 0; i < NUM_BUTTONS; i++) {
-    switch (buttonsPressed[i]) {
+    switch (buttonsState[i]) {
       case 1:
         led.on();
         buzzer.buzz();

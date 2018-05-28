@@ -2,7 +2,7 @@
 
 Led led(13, false);
 Button button(2, 5);
-byte pressed;
+byte state;
 
 void setup() {
   Serial.begin(9600);
@@ -10,8 +10,8 @@ void setup() {
 }
 
 void loop() {
-  pressed = button.pressed();
-  switch (pressed) {
+  state = button.state();
+  switch (state) {
     case 1:
       led.on();
       Serial.println("Button pressed");
